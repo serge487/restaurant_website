@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Subcategory extends Model
 {
     use HasFactory;
-    
+
     protected $guarded =[];
 
-    public function subcategories()
+    public function category()
     {
-        return $this->hasMany(Subcategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function menuItems()
     {
-        return $this->hasManyThrough(MenuItem::class, Subcategory::class);
+        return $this->hasMany(MenuItem::class);
     }
 }

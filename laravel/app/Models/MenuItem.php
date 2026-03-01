@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class MenuItem extends Model
 {
-   
     use HasFactory;
-    protected $fillable = ['category_id', 'name', 'description', 'price', 'image', 'is_available'];
+    
+    protected $guarded =[];
 
-    public function category()
+    public function subcategory()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Subcategory::class);
     }
 }

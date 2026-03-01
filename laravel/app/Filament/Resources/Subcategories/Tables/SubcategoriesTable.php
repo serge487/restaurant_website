@@ -1,45 +1,36 @@
 <?php
 
-namespace App\Filament\Resources\MenuItems\Tables;
+namespace App\Filament\Resources\Subcategories\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class MenuItemsTable
+class SubcategoriesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('subcategory.category.name')
-                    ->label('Category')
+                TextColumn::make('category.name')
                     ->sortable()
-                    ->badge()
-                    ->color('gray'),
-
-                TextColumn::make('subcategory.name')
-                    ->label('Subcategory')
-                    ->sortable()
-                    ->searchable(),
-
+                    ->searchable()
+                    ->label('Parent Category')
+                    ->badge(),
+                    
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-
-                TextColumn::make('price')
-                    ->money()
+                    
+                TextColumn::make('sort_order')
+                    ->numeric()
                     ->sortable(),
-
-                ImageColumn::make('image')
-                    ->circular(),
-
-                IconColumn::make('is_available')
+                    
+                IconColumn::make('is_active')
                     ->boolean(),
             ])
             ->filters([])
