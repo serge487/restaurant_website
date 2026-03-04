@@ -21,7 +21,7 @@
         <p class="text-xs text-gray-500 tracking-[0.5em] uppercase">Culinary Excellence</p>
     </header>
 
-    <!-- Category Quick Navigation (Optional but pro) -->
+    <!-- Category Quick Navigation -->
     <nav class="sticky top-0 bg-black/80 backdrop-blur-md z-50 border-b border-gray-900 py-4 mb-10 overflow-x-auto whitespace-nowrap px-6 no-scrollbar">
         @foreach($categories as $category)
             <a href="#category-{{ $category->id }}" class="inline-block text-xs uppercase tracking-widest text-gray-400 hover:text-gold px-4 transition-colors">
@@ -55,20 +55,38 @@
                             <!-- Items List -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                 @foreach($subcategory->menuItems as $item)
-                                    <div class="group">
-                                        <div class="flex justify-between items-baseline mb-2">
-                                            <h4 class="text-base font-medium uppercase tracking-wide group-hover:text-gold transition-colors">
-                                                {{ $item->name }}
-                                            </h4>
-                                            <div class="ml-4 text-sm font-bold text-gold tabular-nums">
-                                                ${{ number_format($item->price, 2) }}
+                                    <!-- Updated Item Card with Image -->
+                                    <div class="group flex gap-4">
+                                        
+                                        <!-- Image Section -->
+                                        @if($item->image)
+                                            <div class="w-20 h-20 flex-shrink-0">
+                                                <img 
+                                                    src="{{ asset('storage/' . $item->image) }}" 
+                                                    alt="{{ $item->name }}" 
+                                                    class="w-full h-full object-cover rounded border border-gray-800 group-hover:border-gold transition-colors"
+                                                >
                                             </div>
-                                        </div>
-                                        @if($item->description)
-                                            <p class="text-sm text-gray-500 leading-relaxed font-light italic">
-                                                {{ $item->description }}
-                                            </p>
                                         @endif
+
+                                        <!-- Text & Details Section -->
+                                        <div class="flex-1">
+                                            <div class="flex justify-between items-baseline mb-2">
+                                                <h4 class="text-base font-medium uppercase tracking-wide group-hover:text-gold transition-colors">
+                                                    {{ $item->name }}
+                                                </h4>
+                                                <div class="ml-4 text-sm font-bold text-gold tabular-nums">
+                                                    ${{ number_format($item->price, 2) }}
+                                                </div>
+                                            </div>
+                                            
+                                            @if($item->description)
+                                                <p class="text-sm text-gray-500 leading-relaxed font-light italic">
+                                                    {{ $item->description }}
+                                                </p>
+                                            @endif
+                                        </div>
+                                        
                                     </div>
                                 @endforeach
                             </div>
