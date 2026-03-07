@@ -20,8 +20,7 @@
                                      onclick="addToCart({{ $item->id }}, '{{ addslashes($item->name) }}', {{ $item->price }}, '{{ $item->image ? asset('storage/' . $item->image) : '' }}')">
 
                                     @if($item->image)
-                                        <img src="{{ asset('storage/' . $item->image) }}"
-                                             alt="{{ $item->name }}"
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}"
                                              class="menu-card-img">
                                     @else
                                         <div class="menu-card-img-placeholder">
