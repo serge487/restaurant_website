@@ -32,3 +32,17 @@
     display:flex;
     justify-content:space-between;
 }
+
+.menu-container {
+    width: 100%;
+    max-width: 1200px; /* Adjust this value to make the menu wider or narrower */
+    margin: 0 auto;    /* Centers the whole menu on the screen */
+    padding: 0 40px;   /* This defines your "marginal limits" (side spacing) */
+    box-sizing: border-box;
+}
+
+/* Optional: Add some vertical spacing between components */
+.menu-container > * {
+    margin-bottom: 2rem;
+}
+

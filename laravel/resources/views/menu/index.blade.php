@@ -15,14 +15,25 @@
 
     @include('menu.components.header')
 
-    @include('menu.components.category-tabs', ['categories' => $categories])
+    <!-- Added container wrapper here -->
+    <main class="menu-container">
+        @include('menu.components.category-tabs', ['categories' => $categories])
 
-    @include('menu.components.subcategory-bar', ['categories' => $categories])
+        @include('menu.components.subcategory-bar', ['categories' => $categories])
 
-    @include('menu.components.items-grid', ['categories' => $categories])
+        @include('menu.components.items-grid', ['categories' => $categories])
+    </main>
 
+<!-- Floating Action Buttons Container -->
+<div class="floating-actions">
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <!-- Your existing Cart component -->
     @include('menu.components.cart')
-
+</div>
     <div class="toast" id="toast"></div>
 
     <footer class="site-footer">

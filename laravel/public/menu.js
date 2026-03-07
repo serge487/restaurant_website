@@ -50,6 +50,23 @@ function showSubPanel(catId, subId) {
     }
 }
 
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "flex";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+backToTopBtn.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
 /* ── Cart: Add ── */
 function addToCart(id, name, price, image) {
     if (cart[id]) {

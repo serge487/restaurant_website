@@ -123,3 +123,59 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* Responsive */
 @media(max-width:640px){.cat-grid{max-width:100%}.cart-drawer{width:100vw}.items-grid{grid-template-columns:1fr}}
+
+
+
+
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+}
+/* Container for both buttons */
+.floating-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; /* Stacks them vertically */
+    gap: 10px;              /* Space between the two buttons */
+    z-index: 1000;          /* Keeps them above everything else */
+    align-items: center;
+}
+
+/* Individual button styles */
+.back-to-top {
+    background-color: #e1a32e; /* Gold color */
+    color: #1a1a1a;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Hidden by default via JS */
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.back-to-top:hover {
+    background-color: #e2be78;
+    transform: translateY(-3px);
+}
+
+/* IMPORTANT: Override the Cart FAB's fixed position */
+.cart-fab {
+    position: relative !important; /* Forces it to stay in the flexbox */
+    bottom: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    /* Keep your existing size/color/shadow for .cart-fab */
+}
+
+/* Ensure the drawer and overlay remain full-screen */
+.cart-overlay, .cart-drawer {
+    position: fixed !important;
+    z-index: 1001; /* Higher than the buttons */
+}
