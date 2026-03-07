@@ -7,4 +7,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/', [MenuController::class, 'index'])->name('home');
+Route::get('/', [MenuController::class, 'index'])->name('menu');
